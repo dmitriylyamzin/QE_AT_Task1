@@ -1,0 +1,7 @@
+awk '
+/<type>/ {dict[substr($0, index($0, "<type>") + 6, length - 13)] += 1}
+
+END { 
+print "List of types:"
+for (key in dict) { print key ": " dict[key] } }
+' logs.txt
